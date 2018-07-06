@@ -65,6 +65,13 @@
     <meta property="og:image:alt" content="<?php echo $metaOgImageAlt ?>" />
     <meta property="og:image:url" content="<?php echo $metaOgImageUrl ?>" />
     <meta property="og:image:type" content="<?php echo $metaOgImageType ?>" />
+    <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+    <link rel="apple-touch-icon" href="/assets/img/icon-152.png">
+    <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="196x196" href="/assets/img/icon-196.png">
   </head>
   <body>
     <!-- HEADER -->
@@ -91,7 +98,7 @@
         </article>
       </section>
       <!-- PÁGINA INICIAL - BANNER 02 -->
-      <section class="row">
+      <section class="row bannerDoisHome">
         <article class="banner col-12" id="banner02">
           <div>          
             <h3>É muito simples!<br/>É só preencher e clicar em 'Medir!'</h3>

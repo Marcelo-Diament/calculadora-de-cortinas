@@ -100,113 +100,174 @@
         </article>
       </section>
       <!-- RESULTADO -->
-      <section class="row">
+      <section class="row outputFormRow">
         <article class="outputForm col-12" id="outputform">
           <?php
-            if (isset($_GET)){
-              if (isset($_GET["largcortina"])){
-                $largcortina = $_GET["largcortina"];
-              }else {
-                echo "<h2 style='color:#000'>Largura da cortina não capturada</h2>";
-              }
-              if (isset($_GET["altcortina"])){
-                $altcortina = $_GET["altcortina"];
-              }else {
-                echo "<h2 style='color:#000'>Altura da cortina não capturada</h2>";
-              }
-              if (isset($_GET["largrolo"])){
-                $largrolo = $_GET["largrolo"];
-              }else {
-                echo "<h2 style='color:#000'>Largura do rolo não capturada</h2>";
-              }
-              if (isset($_GET["emenda"])){
-                $emenda = $_GET["emenda"];
-              }else {
-                echo "<h2 style='color:#000'>Largura da emenda não capturada</h2>";
-              }
-              if (isset($_GET["fechamento"])){
-                $fechamento = $_GET["fechamento"];
-              }else {
-                echo "<h2 style='color:#000'>Largura do fechamento não capturada</h2>";
-              }
-              if (isset($_GET["rodateto"])){
-                $rodateto = $_GET["rodateto"];
-              }else {
-                echo "<h2 style='color:#000'>Altura da barra superior não capturada</h2>";
-              }
-              if (isset($_GET["rodape"])){
-                $rodape = $_GET["rodape"];
-              }else {
-                echo "<h2 style='color:#000'>Altura da barra inferior não capturada</h2>";
-              }
-            } else {
-              echo "
-                <h4>Ops! Parece que houve algum probleminha...</h4>
-                <br/>
-                <p>Por favor, tente novamente!</p>
-              ";
-            }
+          // ## CORTINA LINEAR
+              if (isset($_GET)){
+                        if (isset($_GET["altcortina"])){
+                          $altcortina = $_GET["altcortina"];
+                        }else {
+                          echo "<h2 style='color:#000'>Altura da cortina não capturada</h2>";
+                        }
+                        if (isset($_GET["largcortina"])){
+                          $largcortina = $_GET["largcortina"];
+                        }else {
+                          echo "<h2 style='color:#000'>Largura da cortina não capturada</h2>";
+                        }
+                        if (isset($_GET["largrolo"])){
+                          $largrolo = $_GET["largrolo"];
+                        }else {
+                          echo "<h2 style='color:#000'>Largura do rolo não capturada</h2>";
+                        }
+                        if (isset($_GET["emenda"])){
+                          $emenda = $_GET["emenda"];
+                        }else {
+                          echo "<h2 style='color:#000'>Largura da emenda não capturada</h2>";
+                        }
+                        if (isset($_GET["fechamento"])){
+                          $fechamento = $_GET["fechamento"];
+                        }else {
+                          echo "<h2 style='color:#000'>Largura do fechamento não capturada</h2>";
+                        }
+                        if (isset($_GET["rodateto"])){
+                          $rodateto = $_GET["rodateto"];
+                        }else {
+                          echo "<h2 style='color:#000'>Altura da barra superior não capturada</h2>";
+                        }
+                        if (isset($_GET["rodape"])){
+                          $rodape = $_GET["rodape"];
+                        }else {
+                          echo "<h2 style='color:#000'>Altura da barra inferior não capturada</h2>";
+                        }
+                        if (isset($_GET)){
+                          // Soma da altura total
+                          $altTecido = $altcortina + $_GET["rodape"] + $_GET["rodateto"];
+                          // Incluindo margem de pouco mais de 10%
+                          $altTecidoCompra = round($altTecido * 1.1,-3,PHP_ROUND_HALF_UP)/1000;
+                          // Largura da cortina dividida pela largura do rolo e arredondado para cima.
+                          
 
-
-
+                          $nFaixasInicial = round($largcortina / $largrolo, 0, PHP_ROUND_HALF_UP);
+                          $restoLargura = $largcortina % $largrolo;
+                        }                        
+                      } else {
+                        echo "
+                          <h4>Ops! Parece que houve algum probleminha...</h4>
+                          <br/>
+                          <p>Por favor, tente novamente!</p>
+                        ";
+                      }
           ?>
           <div>          
             <h4>Resultados</h4>
-            <p>Confira abaixo os resultados da sua cortina.</p>
-            <div class="row">
-              <table>
-                <tr class="col-12 offset-md-4 col-md-4">
-                  <th class="col-6">Item</th>
-                  <th class="col-6">Medida</th>
-                </tr>
-                <tr class="col-12 offset-md-4 col-md-4">
-                  <td class="col-6"></td>
-                  <td class="col-6"></td>
-                </tr>
+            <?php
+              if ((($nFaixasInicial * $largrolo) < $largcortina) && ($restoLargura * -1 < 200)){
+                echo "<p>Com ".$nFaixasInicial." faixa(s) de tecido faltam ".$restoLargura." mm para os ".$largcortina." mm da cortina. Será que não vale a pena reduzir um pouco as medidas da cortina?</p>";
+              }
+              echo "<p>Você precisará de <strong>".($nFaixasInicial + 1)." faixas de ".($largrolo/1000)." x ".($altTecido/1000)." m</strong> para fazer sua cortina de ".($largcortina/1000)." x ".($altcortina/1000)." m.<br/>No total (com margem), serão <strong>".(($nFaixasInicial + 1) * $altTecidoCompra)." m lineares</strong> (".(round($altTecidoCompra * ($nFaixasInicial + 1) * $largrolo/1000,2,PHP_ROUND_HALF_UP)) . " m²) de tecido.</p>
+              ";     
+              ?>
+            <h4>Medidas</h4>
+            <p>Confira abaixo as medidas do tecido da sua cortina.</p>
+            <div class="tabela">
+              <table class="table table-hover">
+                <caption>As medidas reais podem variar de acordo com a forma de costura.</caption>
+                <thead>
+                  <tr class="">
+                    <th class="">Medida</th>
+                    <th class="">Valor</th>
+                    <th class="">Notas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <th class="">Altura Total da Cortina</td>
+                    <td class=""><?php echo $altTecido; ?> mm</td>
+                    <td class="">Corte (sem margem)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Altura Total do Tecido (por faixa)</td>
+                    <td class=""><?php echo $altTecidoCompra*1000; ?> mm</td>
+                    <td class="">Compra/Orçamento (com margem)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Número de Faixas</td>
+                    <td class=""><?php echo ($nFaixasInicial + 1); ?> faixas</td>
+                    <td class="">Cada faixa com <?php echo $largrolo." x ".$altTecido." mm"; ?></td>
+                  </tr>
+                  <!--<tr class="">
+                    <th class="">Emenda</td>
+                    <td class=""><?php echo $emenda; ?> mm</td>
+                    <td class="">Projeto (sugestão: 10 m)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Acabamento Lateral</td>
+                    <td class=""><?php echo $fechamento; ?> mm</td>
+                    <td class="">Projeto (sugestão: 50m)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Cabeça (barra superior)</td>
+                    <td class=""><?php echo $rodateto; ?> mm</td>
+                    <td class="">Projeto (sugestão: 120 m)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Barra (rodapé)</th>
+                    <td class=""><?php echo $rodape; ?> mm</td>
+                    <td class="">Projeto (sugestão: 200 m)</td>
+                  </tr>-->
+                </tbody>
               </table>
-              <ul class="col-12">
-                <li class="offset-3 col-3">Medidas</li>
-                <li class="col-3">Valores (mm)</li>
-                <li class="col-3">Observações</li>
-              </ul>
-              <ul class="col-12">
-                <li colspan="3"><b>Medidas inseridas</b></li>
-              </ul>
-              <ul class="col-12">
-                <li class="offset-3 col-3">Largura da Cortina</li>
-                <li class="col-3"><?php echo $largcortina; ?> mm</li>
-                <li class="col-3">Largura final desejada da cortina (projeto)</li>
-              </ul>
-              <ul class="col-12">
-                <li class="offset-3 col-3">Altura da Cortina</li>
-                <li class="col-3"><?php echo $altcortina; ?> mm</li>
-                <li class="col-3">Altura final desejada da cortina (projeto)</li>
-              </ul>
-              <ul class="col-12">
-                <li class="offset-3 col-3">Largura do Rolo de Tecido</li>
-                <li class="col-3"><?php echo $largrolo; ?> mm</li>
-                <li class="col-3">Largura padrão do mercado (de acordo com cada tecido)</li>
-              </ul>
-              <ul class="col-12">
-                <li class="offset-3 col-3">Largura da Emenda (enule cada faixa de tecido)</li>
-                <li class="col-3"><?php echo $emenda; ?> mm</li>
-                <li class="col-3">Definida pelo projeto ou por quem vai costurar</li>
-              </ul>
-              <ul class="col-12">
-                <li class="offset-3 col-3">Largura do Acabamento Lateral (pontas da cortina)</li>
-                <li class="col-3"><?php echo $fechamento; ?> mm</li>
-                <li class="col-3">Definida pelo projeto ou por quem vai costurar</li>
-              </ul>
-              <ul class="col-12">
-                <li class="offset-3 col-3">Altura da Cabeça da Cortina (barra superior)</li>
-                <li class="col-3"><?php echo $rodateto; ?> mm</li>
-                <li class="col-3">Definida pelo projeto ou por quem vai costurar</li>
-              </ul>
-              <ul class="col-12">
-                <li class="offset-3 col-3">Altura da Barra da Cortina (rodapé)</li>
-                <li class="col-3"><?php echo $rodape; ?> mm</li>
-                <li class="col-3">Definida pelo projeto ou por quem vai costurar</li>
-              </ul>
+              <h4>Informações Enviadas</h4>
+            <p>Essas foram as medidas usadas no cálculo do tecido</p>
+            <div class="tabela">
+              <table class="table table-hover">
+                <caption>Informações enviadas pelo formulário.</caption>
+                <thead>
+                  <tr class="">
+                    <th class="">Medida</th>
+                    <th class="">Valor (mm)</th>
+                    <th class="">Notas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <th class="">Largura da Cortina</td>
+                    <td class=""><?php echo $largcortina; ?> mm</td>
+                    <td class="">Projeto (cortina final)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Altura da Cortina</td>
+                    <td class=""><?php echo $altcortina; ?> mm</td>
+                    <td class="">Projeto (cortina final)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Largura do Rolo de Tecido</td>
+                    <td class=""><?php echo $largrolo; ?> mm</td>
+                    <td class="">Padrão (de acordo com o tecido)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Emenda</td>
+                    <td class=""><?php echo $emenda; ?> mm</td>
+                    <td class="">Projeto (sugestão: 10 mm)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Acabamento Lateral</td>
+                    <td class=""><?php echo $fechamento; ?> mm</td>
+                    <td class="">Projeto (sugestão: 50mm)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Cabeça (barra superior)</td>
+                    <td class=""><?php echo $rodateto; ?> mm</td>
+                    <td class="">Projeto (sugestão: 120 mm)</td>
+                  </tr>
+                  <tr class="">
+                    <th class="">Barra (rodapé)</th>
+                    <td class=""><?php echo $rodape; ?> mm</td>
+                    <td class="">Projeto (sugestão: 200 mm)</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
             <!--<form class="form-horizontal" action="/calculo-de-cortina-linear-resultados.php" method="post">

@@ -34,7 +34,7 @@ html{
 	width: 100vw;
 }
 #img-cortina-esq, #img-cortina-dir{
-    animation-duration: 5s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
     z-index: 10;
     width: 100vw;
@@ -46,6 +46,9 @@ html{
     display: block;
     margin: 0;
     padding: 0;
+    -webkit-transition: left, right, padding 2s ease-out;
+    -o-transition: left, right, padding 2s ease-out;
+    transition: left, right, padding 2s ease-out;
 }
 #img-cortina-esq{
 	animation-name: abrirCortinaEsq;
@@ -204,6 +207,7 @@ article.banner div, article.inputFormDiv div, article.inputFormDiv div p a, arti
     background-clip: inherit;
     background-size: cover;
     height: 102vh;
+    /*min-height: 230% !important;*/
     width: 100vw;
     /*padding-top: 30% !important;*/
     margin-top: 0;
@@ -232,6 +236,7 @@ article.banner div, article.inputFormDiv div, article.inputFormDiv div p a, arti
 	}
 	#banner02{
 	padding-top: 15% !important;
+    /*min-height: 100% !important;*/
 	}
 }
 /* INPUT FORM*/
@@ -287,11 +292,22 @@ article.banner div, article.inputFormDiv div, article.inputFormDiv div p a, arti
     background-clip: inherit;
     background-size: cover;
     height: 180vh;
+    /*min-height: 230% !important;*/
     width: 100vw;
     /*padding-top: 10% !important;*/
     margin-top: 0;
     margin-left: 0px;
     margin-right: 0px;
+    overflow: hidden;
+}
+@media only screen and (max-width: 618px){
+    .inputForm{
+        max-height: 300vh;
+        min-height: 230% !important;
+    }
+    section.row.outputFormRow, section.row.inputFormRow{
+        min-height: 230% !important;
+    }
 }
 .inputForm div h4{
     padding-top: 100px;
@@ -307,11 +323,12 @@ button[type=submit]{
     margin: auto;
     justify-content: center;
 }
-main section:nth-child(2){
+section.row.outputFormRow, section.row.inputFormRow{
     margin-right: -30px;
     margin-left: -30px;
     margin-top: 0;
     margin-bottom: 0;
+    min-height: 180% !important;
 }
 .cta{
     text-transform: uppercase;
@@ -359,25 +376,34 @@ main section:nth-child(2){
 .outputFormDiv p a:hover, button[type=submit] a:hover{
     text-decoration: none;
 }
-#outputform{
+.outputForm{
     background: #ff6954;
     -webkit-background-image: linear-gradient(to right top, #ff00e9, #ff009d, #ff6954, #ffb700, #fff400);
     background-image: linear-gradient(to right top, #ff00e9, #ff009d, #ff6954, #ffb700, #fff400);
     background-origin: content-box;
     background-position: center;
     background-attachment: fixed !important;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-clip: inherit;
-    background-size: cover;
-    height: 180vh;
+    background-size: 100%;
+    /*height: 102vh;*/
+    min-height: 300vh !important;
     width: 100vw;
     /*padding-top: 10% !important;*/
     margin-top: 0;
     margin-left: 0px;
     margin-right: 0px;
 }
+@media only screen and (max-width: 618px){
+    #outputform{
+        min-height: 150vh;
+        height: 250vh;
+    }
+}
 .outputForm p{
     color: #fff !important;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 p.offest-1.col-10.erro{
     max-width: 280px !important;
@@ -400,19 +426,34 @@ p.offest-1.col-10.erro{
 .outputForm ul li{
     color: #fff;
     font-size: 1.2em;
-    margin: 15px
+    /*margin: 15px*/
 }
 .ouputForm a.erro{
     max-width: 290px !important;
 }
 /* RESULTADOS - TABELA */
-table{
-    border: 2px solid #000 !important;
+.table-hover{
+    width: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 1rem;
+    color: #fff;
+    background-color: transparent;
+    text-align: left;
+    font-size: 1.25em;
 }
-/*
+table tbody tr td:nth-child(2), table thead tr th:nth-child(2){
+    text-align: center;
+}
+table caption{
+    color: #fff;
+    font-style: italic;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
 @media only screen and (max-width: 618px){
-  .inputFormDiv, .inputFormDiv div{
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-}*/
+    .table-hover{
+        font-size: 1.8em;
+    }
+}

@@ -87,7 +87,7 @@
         </article>
       </section>
       <!-- FORMULÁRIO -->
-      <section class="row">
+      <section class="row inputFormRow">
         <article class="inputForm col-12" id="inputform">
           <div>          
             <h4>Prencha as informações a seguir</h4>
