@@ -77,7 +77,7 @@
         <article class="outputFormDiv" id="outputformdiv">
           <div>
             <?php
-              if (!isset($_GET['largcortina'])){
+              if (!isset($_GET)){
                 echo "
                   <h1>Ops! Parece que algo deu errado...<br/>Por favor, tente calcular sua cortina novamente</h1>
                   <p class='offset-1 col-10 erro'>
@@ -104,125 +104,386 @@
         <article class="outputForm col-12" id="outputform">
           <?php
           // ## CORTINA LINEAR
-              if (isset($_GET)){
-                        if (isset($_GET["altcortina"])){
-                          $altcortina = $_GET["altcortina"];
-                        }else {
-                          echo "<h2 style='color:#000'>Altura da cortina não capturada</h2>";
-                        }
-                        if (isset($_GET["largcortina"])){
-                          $largcortina = $_GET["largcortina"];
-                        }else {
-                          echo "<h2 style='color:#000'>Largura da cortina não capturada</h2>";
-                        }
-                        if (isset($_GET["largrolo"])){
-                          $largrolo = $_GET["largrolo"];
-                        }else {
-                          echo "<h2 style='color:#000'>Largura do rolo não capturada</h2>";
-                        }
-                        if (isset($_GET["emenda"])){
-                          $emenda = $_GET["emenda"];
-                        }else {
-                          echo "<h2 style='color:#000'>Largura da emenda não capturada</h2>";
-                        }
-                        if (isset($_GET["fechamento"])){
-                          $fechamento = $_GET["fechamento"];
-                        }else {
-                          echo "<h2 style='color:#000'>Largura do fechamento não capturada</h2>";
-                        }
-                        if (isset($_GET["rodateto"])){
-                          $rodateto = $_GET["rodateto"];
-                        }else {
-                          echo "<h2 style='color:#000'>Altura da barra superior não capturada</h2>";
-                        }
-                        if (isset($_GET["rodape"])){
-                          $rodape = $_GET["rodape"];
-                        }else {
-                          echo "<h2 style='color:#000'>Altura da barra inferior não capturada</h2>";
-                        }
-                        if (isset($_GET)){
-                          // Soma da altura total
-                          $altTecido = $altcortina + $_GET["rodape"] + $_GET["rodateto"];
-                          // Incluindo margem de pouco mais de 10%
-                          $altTecidoCompra = round($altTecido * 1.1,-3,PHP_ROUND_HALF_UP)/1000;
-                          // Largura da cortina dividida pela largura do rolo e arredondado para cima.
-                          
 
-                          $nFaixasInicial = round($largcortina / $largrolo, 0, PHP_ROUND_HALF_UP);
-                          $restoLargura = $largcortina % $largrolo;
-                        }                        
-                      } else {
-                        echo "
-                          <h4>Ops! Parece que houve algum probleminha...</h4>
-                          <br/>
-                          <p>Por favor, tente novamente!</p>
-                        ";
-                      }
-          ?>
-          <div>          
-            <h4>Resultados</h4>
-            <?php
-              if ((($nFaixasInicial * $largrolo) < $largcortina) && ($restoLargura * -1 < 200)){
-                echo "<p>Com ".$nFaixasInicial." faixa(s) de tecido faltam ".$restoLargura." mm para os ".$largcortina." mm da cortina. Será que não vale a pena reduzir um pouco as medidas da cortina?</p>";
+              // Validando recebimento de inputs e gerando variáveis
+              if (isset($_GET)){
+                if (isset($_GET["altcortina"])){
+                  $altcortina = $_GET["altcortina"];
+                }else {
+                  echo "<h2 style='color:#000'>Altura da cortina não capturada</h2>";
+                }
+                if (isset($_GET["largcortina"])){
+                  $largcortina = $_GET["largcortina"];
+                }else {
+                  echo "<h2 style='color:#000'>Largura da cortina não capturada</h2>";
+                }
+                if (isset($_GET["largrolo"])){
+                  $largrolo = $_GET["largrolo"];
+                }else {
+                  echo "<h2 style='color:#000'>Largura do rolo não capturada</h2>";
+                }
+                if (isset($_GET["emenda"])){
+                  $emenda = $_GET["emenda"];
+                }else {
+                  echo "<h2 style='color:#000'>Largura da emenda não capturada</h2>";
+                }
+                if (isset($_GET["fechamento"])){
+                  $fechamento = $_GET["fechamento"];
+                }else {
+                  echo "<h2 style='color:#000'>Largura do fechamento não capturada</h2>";
+                }
+                if (isset($_GET["fechamentoTipoInput"])){
+                  $fechamentoTipoInput = $_GET["fechamentoTipoInput"];
+                } else {$fechamentoTipoInput = 1;}
+                if(isset($_GET["rodateto"])){
+                  $rodateto = $_GET["rodateto"];
+                }else {
+                  echo "<h2 style='color:#000'>Altura da barra superior não capturada</h2>";
+                }
+                if (isset($_GET["rodape"])){
+                  $rodape = $_GET["rodape"];
+                }else {
+                  echo "<h2 style='color:#000'>Altura da barra inferior não capturada</h2>";
+                }
+                if (isset($_GET["franzimento"])){
+                  $franzimento = $_GET["franzimento"];
+                } else {$franzimento = 1;}
               }
-              echo "<p>Você precisará de <strong>".($nFaixasInicial + 1)." faixas de ".($largrolo/1000)." x ".($altTecido/1000)." m</strong> para fazer sua cortina de ".($largcortina/1000)." x ".($altcortina/1000)." m.<br/>No total (com margem), serão <strong>".(($nFaixasInicial + 1) * $altTecidoCompra)." m lineares</strong> (".(round($altTecidoCompra * ($nFaixasInicial + 1) * $largrolo/1000,2,PHP_ROUND_HALF_UP)) . " m²) de tecido.</p>
-              ";     
-              ?>
-            <h4>Medidas</h4>
-            <p>Confira abaixo as medidas do tecido da sua cortina.</p>
+              
+              // CALCULOS
+              /*// Soma da altura total
+              $altTecido = $altcortina + $rodape + $rodateto;
+              // Incluindo margem de pouco mais de 10%
+              $altTecidoCompra = round($altTecido * 1.1,-3,PHP_ROUND_HALF_UP)/1000;
+              // Largura da cortina dividida pela largura do rolo e arredondado para cima.
+              $nFaixasInicial = round($largcortina / $largrolo, 0, PHP_ROUND_HALF_UP);
+              $restoLargura = $largcortina % $largrolo; */
+              
+          // VARIÁVEIS CALCULADAS
+
+
+          // ALTURAS
+
+          // Altura total do tecido (soma da altura da cortina, barras superiores e inferiores)
+          $altSub = ($altcortina + $rodape + $rodateto)/1000;
+          // Adicionando margem de 10% à altura final do tecido e arredondando para cima (para imperfeições no tecido e erros de corte no rolo)
+          $altTotal = round($altSub * 1.1,0,PHP_ROUND_HALF_UP);
+
+
+          // LARGURAS
+
+          // Quantidade de tecido (largura) para as emendas de cada faixa (2 emendas/faixa)
+          $emendasPorFaixa = $emenda*2;
+          // Tipo de Fechamento/Acabamento Lateral (simples ou duplo)
+          $fechamentoTipo = array(
+            "simples" => "1",
+            "duplo" => "2",
+          );
+          //Quantidade de tecido (largura) para o fechamento de cada ponta da cortina
+          $fechamentoSub = $fechamento * $fechamentoTipoInput;
+          // Quantidade de tecido (largura) para o fechamento das duas pontas da cortina
+          $fechamentoTotal = $fechamentoSub * 2;
+          // Graus de Franzimento (multiplicam a largura)
+          $nivelFranzimento = array(
+            "normal" => "1",
+            "medio" => "2",
+            "alto" => "3"
+          );
+          //Largura linear (visível, de acordo com projeto e tipo de franzimento). Somado às emendas e acabamentos laterais dará o total real da largura em tecidos.
+          $largcortinaSub = $franzimento * $largcortina;
+          
+
+          // CÁLCULOS DE APOIO
+          
+          
+          // FAIXAS
+          
+          // Número de Faixas Inicial - largura da cortina dividida pela largura do rolo e arredondado para cima.
+          $nFaixasInicial = round($largcortinaSub / $largrolo, 0, PHP_ROUND_HALF_UP);
+          // Quantidade de Emendas
+          $nFaixas = $nFaixasInicial +1;
+          
+
+          // LARGURAS
+          
+          // Largura de tecido das emendas todas
+          $emendaTotal = $nFaixasInicial * $emendasPorFaixa;
+          // Largura final da cortina
+          $largCortinaTotal = $largcortinaSub + $fechamentoTotal + $emendaTotal;
+
+          // FAIXAS II
+
+          // Largura de todas as faixas de tecido (com margem e tudo)
+          $largFaixasTodasSemCorte = $nFaixas*$largrolo;
+          // Sobra de tecido (largura)
+          $sobraLargura = $largFaixasTodasSemCorte - $largCortinaTotal;
+          // Largura da faixa do miolo (entre as duas das pontas)
+          $largFaixaMiolo = $largrolo - $emendasPorFaixa;
+          // Largura de cada uma das faixas das pontas
+          $largFaixaPonta = ($largrolo - ($sobraLargura/2)) - $emenda - $fechamentoSub;
+          // Largura da costura de todas as faixas
+          $largFaixasTodas = ($largFaixaMiolo * ($nFaixas - 2)) + (2 * $largFaixaPonta);
+          // Largura do tecido das faixas das pontas
+          $largTecidoPonta = $largrolo-($sobraLargura/2);
+
+          // Fusorário Brasil (SP)
+          $timezone  = -3;
+
+          ?>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+            <h4>Resultados</h4>
+            <h2>Medidas para a Compra do Tecido</h2>
+            <p>Dependendo do tecido pode ser que seja vendido por kg.</p>
             <div class="tabela">
               <table class="table table-hover">
-                <caption>As medidas reais podem variar de acordo com a forma de costura.</caption>
+                <caption>Dica: verifique se há imperfeições no tecido.</caption>
                 <thead>
-                  <tr class="">
-                    <th class="">Medida</th>
-                    <th class="">Valor</th>
-                    <th class="">Notas</th>
+                  <tr>
+                    <th>Medida</th>
+                    <th></th>
+                    <th>Valor</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="">
-                    <th class="">Altura Total da Cortina</td>
-                    <td class=""><?php echo $altTecido; ?> mm</td>
-                    <td class="">Corte (sem margem)</td>
+                  <tr>
+                    <th>Largura do rolo</td>
+                    <td></td>
+                    <td><?php echo $largrolo; ?> mm</td>
                   </tr>
-                  <tr class="">
-                    <th class="">Altura Total do Tecido (por faixa)</td>
-                    <td class=""><?php echo $altTecidoCompra*1000; ?> mm</td>
-                    <td class="">Compra/Orçamento (com margem)</td>
+                  <tr>
+                    <th>Metragem linear de tecido</td>
+                    <td></td>
+                    <td><?php echo $altTotal * $nFaixas; ?> m</td>
                   </tr>
-                  <tr class="">
-                    <th class="">Número de Faixas</td>
-                    <td class=""><?php echo ($nFaixasInicial + 1); ?> faixas</td>
-                    <td class="">Cada faixa com <?php echo $largrolo." x ".$altTecido." mm"; ?></td>
+                  <tr>
+                    <th>Área de Tecido</td>
+                    <td></td>
+                    <td><?php echo round(($altTotal * $nFaixas * $largrolo/1000),2,PHP_ROUND_HALF_UP); ?> m²</td>
                   </tr>
-                  <!--<tr class="">
-                    <th class="">Emenda</td>
-                    <td class=""><?php echo $emenda; ?> mm</td>
-                    <td class="">Projeto (sugestão: 10 m)</td>
-                  </tr>
-                  <tr class="">
-                    <th class="">Acabamento Lateral</td>
-                    <td class=""><?php echo $fechamento; ?> mm</td>
-                    <td class="">Projeto (sugestão: 50m)</td>
-                  </tr>
-                  <tr class="">
-                    <th class="">Cabeça (barra superior)</td>
-                    <td class=""><?php echo $rodateto; ?> mm</td>
-                    <td class="">Projeto (sugestão: 120 m)</td>
-                  </tr>
-                  <tr class="">
-                    <th class="">Barra (rodapé)</th>
-                    <td class=""><?php echo $rodape; ?> mm</td>
-                    <td class="">Projeto (sugestão: 200 m)</td>
-                  </tr>-->
                 </tbody>
               </table>
-              <h4>Informações Enviadas</h4>
+            </div>
+            <br/>
+            <h2>Corte do Tecido</h2>
+            <p>Confira abaixo as medidas para cortar o tecido.</p>
+            <div class="tabela">
+              <table class="table table-hover">
+                <caption>Dica: use as sobras para criar adereços.</caption>
+                <thead>
+                  <tr>
+                    <th>Medida</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Valor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Número de Faixas</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><?php echo $nFaixas; ?></td>
+                  </tr>
+                  <tr>
+                    <th>Altura de cada Faixa</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><?php echo $altSub; ?> m</td>
+                  </tr>
+                  <?php
+                    if ($nFaixas > 2) {
+                      echo "
+                        <tr>
+                          <th>Largura de " . ($nFaixas - 2) . " Faixas (miolos)</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>".($largrolo/1000)." m</td>
+                        </tr>
+                      ";
+                    }
+                  ?>
+                  <tr>
+                    <th>Largura de 2 Faixas (pontas)</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><?php echo ($largTecidoPonta)/1000; ?> m</td>
+                  </tr>
+                  <?php
+                    if ($sobraLargura > 0){
+                      echo "
+                        <tr>
+                          <th>Sobra de Tecido (pedaços)</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>2x de " . ($sobraLargura/1000/2) . " x " . $altSub . " m</td>
+                        </tr>
+                      ";
+                    }
+                  ?>
+                </tbody>
+              </table>
+            </div>
+            <br/>
+            <h2>Costura da Cortina</h2>
+            <p>As medidas já estão na ordem do processo de costura.</p>
+            <div class="tabela">
+              <table class="table table-hover">
+                <caption>Atenção: as pontas são as faixas com medidas menores.</caption>
+                <thead>
+                  <tr>
+                    <th class="colspan-5">Passo 1 | Emendas</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>Faixa</th>
+                    <th>Valores</th>
+                    <th>Largura Final</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Pontas (1 emenda por ponta)</td>
+                    <td><?php echo $emenda; ?> mm</td>
+                    <td><?php echo $largTecidoPonta - $emenda; ?> mm</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <?php
+                    if ($nFaixas > 2) {
+                      echo "
+                      <tr>
+                        <th>Miolos (".($nFaixas - 2).")</td>
+                        <td>".$emenda." mm x 2</td>
+                        <td>".($largrolo - (2 * $emenda))." mm</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                        
+                      ";
+                    }
+                  ?>
+                </tbody>
+              </table>
+              <br/>
+              <table class="table table-hover">
+                <caption>Deixe todas as faixas no mesmo sentido vertical.</caption>
+                <thead>
+                  <tr>
+                    <th class="colspan-5">Passo 2 | Cabeça e Barra</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>Cabeça (barra superior)</th>
+                    <th>Barra</th>
+                    <th>Altura Final</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><?php echo $rodateto; ?> mm</td>
+                    <td><?php echo $rodape; ?> mm</td>
+                    <td><?php echo (($altSub*1000) - ($rodape + $rodateto)); ?> mm</td>
+                  </tr>
+                </tbody>
+              </table>
+              <br/>
+              <div class="tabela">
+              <table class="table table-hover">
+                <caption>Em cada ponta o acabamento fica de um lado.</caption>
+                <thead>
+                  <tr>
+                    <th class="colspan-5">Passo 3 | Laterais</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <th>Faixa</th>
+                    <th>Valores</th>
+                    <th>Largura Final</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Pontas</td>
+                    <td><?php echo $fechamentoSub; ?> mm</td>
+                    <td><?php echo $largTecidoPonta - $emenda - $fechamentoSub; ?> mm</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br/>
+            
+            <h4>Resultado Final</h4>
+            <!--<h2>Aproveitamento</h2>-->
+            <p>Medidas Finais: <?php echo ($largcortina / 1000)." x ".($altcortina / 1000)." m"; ?></p>
+            <div class="tabela">
+              <table class="table table-hover">
+                <!--<caption>Em cada ponta o acabamento fica de um lado.</caption>-->
+                <thead>
+                  <tr>
+                    <th>Faixa</th>
+                    <th>Largura</th>
+                    <th>Altura</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Faixa Ponta 1</td>
+                    <td><?php echo $largFaixaPonta; ?> mm</td>
+                    <td><?php echo $altcortina; ?> mm</td>
+                  </tr>
+                  <?php
+                    if ($nFaixas > 2) {
+                      echo "
+                      <tr>
+                        <th>".($nFaixas - 2)." Faixas</td>
+                        <td>".($nFaixas - 2)." x ".$largFaixaMiolo." mm</td>
+                        <td>".$altcortina." mm</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                        
+                      ";
+                    }
+                  ?>
+                  <tr>
+                    <th>Faixa Ponta 2</td>
+                    <td><?php echo $largFaixaPonta; ?> mm</td>
+                    <td><?php echo $altcortina; ?> mm</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br/>
+
+            <h4>Dicas</h4>
+            <h2>Aproveitamento</h2>
+            <p>Use 100% do tecido ajustando a largura da cortina para <?php echo ($largcortina - $sobraLargura) / 1000 ?> m (ou para <?php echo ($largcortina + $sobraLargura)/1000; ?> m).
+            <br/><br/>
+            Aproveite as sobras para fazer adereços que combinem com sua nova cortina.</p>
+            <br/>
+
+            <h4>Informações Enviadas</h4>
             <p>Essas foram as medidas usadas no cálculo do tecido</p>
             <div class="tabela">
               <table class="table table-hover">
-                <caption>Informações enviadas pelo formulário.</caption>
+                <caption>Informações enviadas pelo formulário em <?php echo date("d/m") . " às ". gmdate("H:i", time() + 3600 * $timezone); ?>.</caption>
                 <thead>
                   <tr class="">
                     <th class="">Medida</th>

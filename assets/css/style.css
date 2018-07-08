@@ -396,8 +396,8 @@ section.row.outputFormRow, section.row.inputFormRow{
 }
 @media only screen and (max-width: 618px){
     #outputform{
-        min-height: 150vh;
-        height: 250vh;
+        min-height: 550vh;
+        height: 550vh !important;
     }
 }
 .outputForm p{
@@ -431,6 +431,11 @@ p.offest-1.col-10.erro{
 .ouputForm a.erro{
     max-width: 290px !important;
 }
+.outputForm h2{
+    font-size:22px !important;
+    margin:-25px;
+    color:purple!important;
+}
 /* RESULTADOS - TABELA */
 .table-hover{
     width: auto !important;
@@ -455,5 +460,14 @@ table caption{
 @media only screen and (max-width: 618px){
     .table-hover{
         font-size: 1.8em;
+    }
+    .outputForm h2{
+        margin-bottom: 10px;
+        max-width: inherit;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .outputForm div h4{
+        margin-bottom: 15px;
     }
 }
