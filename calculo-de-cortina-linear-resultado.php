@@ -1,34 +1,45 @@
 <!DOCTYPE html prefix="og: http://ogp.me/ns#">
 <html lang="pt-br" dir="ltr">
   <head>
+    <!-- ESTILOS, FONTES... -->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+    <link rel="icon" type="image/png" sizes="96x96" href="https://calculadora-de-cortina.com.br/assets/img/logo-96.png">
+    <meta name="theme-color" content="#de584d">
+    <!--<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Catamaran|Fredoka+One|Poiret+One|Satisfy" rel="stylesheet">-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121973699-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-121973699-1');
+    </script>
     <!-- SCRIPTS E INCLUDES (PHP, JQUERY E ENTÃO JS) -->
     <?php include_once("assets/php/functions.php"); ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <!--<script src="assets/js/script.js"></script>-->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <?php header('Content-type: text/html; charset=utf-8'); ?>
     <!-- DADOS ESTRUTURADOS - SCHEMA.ORG -->
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
         "@type": "Organization",
-        "url": "https://calculadora-de-corti.websiteseguro.com",
-        "logo": "https://calculadora-de-corti.websiteseguro.com/assets/img/logo.png",
-        "description": "Calcule a quantidade de tecidos para sua cortina linear - tanto para corte quanto para orçamento",
+        "url": "http://calculadora-de-cortina.com.br",
+        "logo": "http://calculadora-de-cortina.com.br/assets/img/logo.png",
+        "description": "A Calculadora de Cortina Linear calcula a quantia de tecido necessáiria para uma cortina 'reta' (linear) e as medidas para o corte do tecido da cortina, além de prever  sobra de tecido da sua cortina.",
         "additionalType": "http://www.productontology.org/doc/Web_design",
         "telephone" : "+55-11-97605-2723",
         "email" : "contato@djament.com.br",
         "address" : {
           "@type" : "PostalAddress",
-          "streetAddress" : "Rua Guaipá, 223, Vila Leopoldina",
+          "streetAddress" : "Rua Guaipá, Vila Leopoldina",
           "addressLocality" : "São Paulo",
           "addressRegion" : "São Paulo",
           "postalCode" : "05089-001"
         },
-        "sameAs" : [ "https://www.facebook.com/djamentcomunicacao", "https://www.youtube.com/channel/djamentcomunicacao", "https://pinterest.com/djamentcomunicacao/", "https://twitter.com/djamentcomunicacao", "https://vimeo.com/djamentcomunicacao" ]
+        "sameAs" : [ "https://www.facebook.com/djamentcomunicacao" ]
       }
         "contactPoint": [{
           "@type": "ContactPoint",
@@ -38,17 +49,9 @@
       }
     </script>
     <!-- INFORMAÇÕES GERAIS BÁSICAS -->
-    <meta charset="utf-8">
+    <!--<meta charset="utf-8">-->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,width=device-width,user-scalable=no">
     <title><?php echo $titulo ?></title>
-    <!-- ESTILOS, FONTES... -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
-    <link rel="icon" type="image/png" sizes="96x96" href="https://calculadora-de-corti.websiteseguro.com/assets/img/logo.png">
-    <meta name="theme-color" content="#de584d">
-    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Catamaran|Fredoka+One|Poiret+One|Satisfy" rel="stylesheet">
     <!-- META DATA (SEO) / OG -->
     <meta name="title" content="<?php echo $metaTitle ?>">
     <meta name="author" content="<?php echo $autores ?>">
@@ -165,9 +168,9 @@
           // ALTURAS
 
           // Altura total do tecido (soma da altura da cortina, barras superiores e inferiores)
-          $altSub = ($altcortina + $rodape + $rodateto)/1000;
+          $altSub = number_format(($altcortina + $rodape + $rodateto)/1000,2,',', '.');
           // Adicionando margem de 10% à altura final do tecido e arredondando para cima (para imperfeições no tecido e erros de corte no rolo)
-          $altTotal = round($altSub * 1.1,0,PHP_ROUND_HALF_UP);
+          $altTotal = number_format($altSub * 1.1,2,',', '.');
 
 
           // LARGURAS
@@ -199,7 +202,7 @@
           // FAIXAS
           
           // Número de Faixas Inicial - largura da cortina dividida pela largura do rolo e arredondado para cima.
-          $nFaixasInicial = round($largcortinaSub / $largrolo, 0, PHP_ROUND_HALF_UP);
+          $nFaixasInicial = number_format($largcortinaSub / $largrolo,2,',', '.');
           // Quantidade de Emendas
           $nFaixas = $nFaixasInicial +1;
           
@@ -257,12 +260,12 @@
                   <tr>
                     <th>Metragem linear de tecido</td>
                     <td></td>
-                    <td><?php echo $altTotal * $nFaixas; ?> m</td>
+                    <td><?php echo number_format($altTotal * $nFaixas,2,',','.'); ?> m</td>
                   </tr>
                   <tr>
                     <th>Área de Tecido</td>
                     <td></td>
-                    <td><?php echo round(($altTotal * $nFaixas * $largrolo/1000),2,PHP_ROUND_HALF_UP); ?> m²</td>
+                    <td><?php echo number_format(($altTotal * $nFaixas * $largrolo/1000),2,',', '.'); ?> m²</td>
                   </tr>
                 </tbody>
               </table>
@@ -295,7 +298,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><?php echo $altSub; ?> m</td>
+                    <td><?php echo number_format($altSub,2,',', '.'); ?> m</td>
                   </tr>
                   <?php
                     if ($nFaixas > 2) {
@@ -305,7 +308,7 @@
                           <td></td>
                           <td></td>
                           <td></td>
-                          <td>".($largrolo/1000)." m</td>
+                          <td>".number_format(($largrolo/1000),2,',', '.')." m</td>
                         </tr>
                       ";
                     }
@@ -315,7 +318,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><?php echo ($largTecidoPonta)/1000; ?> m</td>
+                    <td><?php echo number_format(($largTecidoPonta)/1000,2,',', '.'); ?> m</td>
                   </tr>
                   <?php
                     if ($sobraLargura > 0){
@@ -325,7 +328,7 @@
                           <td></td>
                           <td></td>
                           <td></td>
-                          <td>2x de " . ($sobraLargura/1000/2) . " x " . $altSub . " m</td>
+                          <td>2x de " . number_format(($sobraLargura/1000/2),2,',', '.') . " x " . number_format($altSub,2,',', '.') . " m</td>
                         </tr>
                       ";
                     }
@@ -431,7 +434,7 @@
             
             <h4>Resultado Final</h4>
             <!--<h2>Aproveitamento</h2>-->
-            <p>Medidas Finais: <?php echo ($largcortina / 1000)." x ".($altcortina / 1000)." m"; ?></p>
+            <p>Medidas Finais: <?php echo number_format(($largcortina / 1000),2,',', '.')." x ".number_format(($altcortina / 1000),2,',', '.')." m"; ?></p>
             <div class="tabela">
               <table class="table table-hover">
                 <!--<caption>Em cada ponta o acabamento fica de um lado.</caption>-->
@@ -474,7 +477,7 @@
 
             <h4>Dicas</h4>
             <h2>Aproveitamento</h2>
-            <p>Use 100% do tecido ajustando a largura da cortina para <?php echo ($largcortina - $sobraLargura) / 1000 ?> m (ou para <?php echo ($largcortina + $sobraLargura)/1000; ?> m).
+            <p>Use 100% do tecido ajustando a largura da cortina para <?php echo number_format(($largcortina - $sobraLargura) / 1000,2,',', '.') ?> m (ou para <?php echo number_format(($largcortina + $sobraLargura)/1000,2,',', '.'); ?> m).
             <br/><br/>
             Aproveite as sobras para fazer adereços que combinem com sua nova cortina.</p>
             <br/>
@@ -530,56 +533,6 @@
                 </tbody>
               </table>
             </div>
-
-            <!--<form class="form-horizontal" action="/calculo-de-cortina-linear-resultados.php" method="post">
-              <div class="form-group">
-                <label class="control-label offset-sm-3 col-sm-6" for="largcortina">Largura da cortina</label>
-                <div class="offset-sm-3 col-sm-6">
-                  <input type="number" class="form-control" id="largcortina" name="largcortina" placeholder="Insira a medida em mm">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label offset-sm-3 col-sm-6" for="altcortina">Altura da cortina</label>
-                <div class="offset-sm-3 col-sm-6">
-                  <input type="number" class="form-control" id="altcortina" name="altcortina" placeholder="Insira a medida em mm">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label offset-sm-3 col-sm-6" for="largrolo">Largura do rolo de tecido</label>
-                <div class="offset-sm-3 col-sm-6">
-                  <input type="number" class="form-control" id="largrolo" name="largrolo" placeholder="Insira a medida em mm">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label offset-sm-3 col-sm-6" for="emenda">Largura da Emenda (de cada lado de cada tecido)</label>
-                <div class="offset-sm-3 col-sm-6">
-                  <input type="number" class="form-control" id="emenda" name="emenda" placeholder="Insira a medida em mm">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label offset-sm-3 col-sm-6" for="fechamento">Largura do Acabamento Lateral (cada ponta da cortina)</label>
-                <div class="offset-sm-3 col-sm-6">
-                  <input type="number" class="form-control" id="fechamento" name="fechamento" placeholder="Insira a medida em mm">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label offset-sm-3 col-sm-6" for="rodateto">Altura da Cabeça da Cortina (barra superior)</label>
-                <div class="offset-sm-3 col-sm-6">
-                  <input type="number" class="form-control" id="rodateto" name="rodateto" placeholder="Insira a medida em mm">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label offset-sm-3 col-sm-6" for="rodape">Altura da Barra da Cortina (rodapé)</label>
-                <div class="offset-sm-3 col-sm-6">
-                  <input type="number" class="form-control" id="rodape" name="rodape" placeholder="Insira a medida em mm">
-                </div>
-              </div>
-              <div class="form-group"> 
-                <div class="col-12 submit">
-                  <button type="submit" name="submit" class="cta btn btn-default">Calcular</button>
-                </div>
-              </div>
-            </form>-->
           </div>
         </article>
       </section>
@@ -588,5 +541,12 @@
     <!--<?php
       //include ("inc/footer.php");
     ?>-->
+    <!--<script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>-->
+    <!--<script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>-->
+    <!--<script defer="defer" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+    <script src="assets/js/jquerycloudflare.js"></script>
+    <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script defer="defer" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </body>
 </html>
