@@ -1,5 +1,5 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light text-black fixed-top">
-    <a title="Clique para acessar a página inicial" alt="Clique para a acessar a página inicial" class="navbar-brand" href="http://calculadora-de-cortina.com.br"><img src="http://calculadora-de-cortina.com.br/assets/img/logo-50.png" alt="Logo da Calculadora de Cortina" title="Clique para acessar a página inicial da Calculadora de Cortina" height="50px" width="50px"></a>
+    <a title="Clique para acessar a página inicial" alt="Clique para a acessar a página inicial" class="navbar-brand" href="https://calculadora-de-cortina.com.br"><img src="https://calculadora-de-cortina.com.br/assets/img/logo-50.png" alt="Logo da Calculadora de Cortina" title="Clique para acessar a página inicial da Calculadora de Cortina" height="50px" width="50px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

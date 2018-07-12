@@ -5,10 +5,8 @@
     <link type="text/css" rel="stylesheet" href="assets/css/style.css">
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
-    <link rel="icon" type="image/png" sizes="96x96" href="http://calculadora-de-cortina.com.br/assets/img/logo-96.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://calculadora-de-cortina.com.br/assets/img/logo-96.png">
     <meta name="theme-color" content="#de584d">
-    <!--<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Catamaran|Fredoka+One|Poiret+One|Satisfy" rel="stylesheet">-->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121973699-1"></script>
     <script>
@@ -26,8 +24,8 @@
       {
         "@context": "http://schema.org",
         "@type": "Organization",
-        "url": "http://calculadora-de-cortina.com.br",
-        "logo": "http://calculadora-de-cortina.com.br/assets/img/logo.png",
+        "url": "https://calculadora-de-cortina.com.br",
+        "logo": "https://calculadora-de-cortina.com.br/assets/img/logo.png",
         "description": "A Calculadora de Cortina Linear calcula a quantia de tecido necessáiria para uma cortina 'reta' (linear) e as medidas para o corte do tecido da cortina, além de prever  sobra de tecido da sua cortina.",
         "additionalType": "http://www.productontology.org/doc/Web_design",
         "telephone" : "+55-11-97605-2723",
@@ -51,7 +49,6 @@
       }
     </script>
     <!-- INFORMAÇÕES GERAIS BÁSICAS -->
-    <!--<meta charset="utf-8">-->
     <meta name="viewport" content="initial-scale=1, maximum-scale=5,width=device-width">
     <title><?php echo $titulo ?></title>
     <!-- META DATA (SEO) / OG -->
@@ -156,13 +153,6 @@
         </article>
       </section>
     </main>
-    <!-- FOOTER -->
-    <!--<?php
-      //include ("inc/footer.php");
-    ?>-->
-    <!--<script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>-->
-    <!--<script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>-->
-    <!--<script defer="defer" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
     <script src="assets/js/jquerycloudflare.js"></script>
     <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script defer="defer" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
