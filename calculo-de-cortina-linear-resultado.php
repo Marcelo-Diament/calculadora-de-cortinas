@@ -6,7 +6,7 @@
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
-    <link rel="icon" type="image/png" sizes="96x96" href="https://calculadora-de-cortina.com.br/assets/img/logo-96.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="http://calculadora-de-cortina.com.br/assets/img/logo-96.png">
     <meta name="theme-color" content="#de584d">
     <!--<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Catamaran|Fredoka+One|Poiret+One|Satisfy" rel="stylesheet">-->
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -32,6 +32,8 @@
         "additionalType": "http://www.productontology.org/doc/Web_design",
         "telephone" : "+55-11-97605-2723",
         "email" : "contato@djament.com.br",
+        "name" : "Calculadora de Cortina",
+        "alternateName" : "Calculadora de Cortina",
         "address" : {
           "@type" : "PostalAddress",
           "streetAddress" : "Rua Guaipá, Vila Leopoldina",
@@ -50,7 +52,7 @@
     </script>
     <!-- INFORMAÇÕES GERAIS BÁSICAS -->
     <!--<meta charset="utf-8">-->
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1,width=device-width,user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=5,width=device-width">
     <title><?php echo $titulo ?></title>
     <!-- META DATA (SEO) / OG -->
     <meta name="title" content="<?php echo $metaTitle ?>">

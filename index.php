@@ -32,6 +32,8 @@
         "additionalType": "http://www.productontology.org/doc/Web_design",
         "telephone" : "+55-11-97605-2723",
         "email" : "contato@djament.com.br",
+        "name" : "Calculadora de Cortina",
+        "alternateName" : "Calculadora de Cortina",
         "address" : {
           "@type" : "PostalAddress",
           "streetAddress" : "Rua Guaipá, Vila Leopoldina",
@@ -50,7 +52,7 @@
     </script>
     <!-- INFORMAÇÕES GERAIS BÁSICAS -->
     <!--<meta charset="utf-8">-->
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1,width=device-width,user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=5,width=device-width">
     <title><?php echo $titulo ?></title>
     <!-- META DATA (SEO) / OG -->
     <meta name="title" content="<?php echo $metaTitle ?>">

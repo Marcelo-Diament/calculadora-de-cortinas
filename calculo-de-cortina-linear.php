@@ -32,6 +32,8 @@
         "additionalType": "http://www.productontology.org/doc/Web_design",
         "telephone" : "+55-11-97605-2723",
         "email" : "contato@djament.com.br",
+        "name" : "Calculadora de Cortina",
+        "alternateName" : "Calculadora de Cortina",
         "address" : {
           "@type" : "PostalAddress",
           "streetAddress" : "Rua Guaipá, Vila Leopoldina",
@@ -50,7 +52,7 @@
     </script>
     <!-- INFORMAÇÕES GERAIS BÁSICAS -->
     <!--<meta charset="utf-8">-->
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1,width=device-width,user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=5,width=device-width">
     <title><?php echo $titulo ?></title>
     <!-- META DATA (SEO) / OG -->
     <meta name="title" content="<?php echo $metaTitle ?>">
@@ -99,49 +101,49 @@
                 <label class="control-label offset-sm-3 col-sm-6" for="largcortina">Largura da cortina*</label>
                 <div class="offset-sm-3 col-sm-6">
                   <input required type="number" class="form-control" value="largcortina" id="largcortina" name="largcortina" placeholder="Insira a medida em mm">
-                  <small id="emailHelp" class="form-text">* Conforme projeto. Campo obrigatório.</small>
+                  <small id="" class="form-text">* Conforme projeto. Campo obrigatório.</small>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label offset-sm-3 col-sm-6" for="altcortina">Altura da cortina*</label>
                 <div class="offset-sm-3 col-sm-6">
                   <input required type="number" class="form-control" value="altcortina" id="altcortina" name="altcortina" placeholder="Insira a medida em mm">
-                  <small id="emailHelp" class="form-text">* Conforme projeto. Campo obrigatório.</small>
+                  <small id="" class="form-text">* Conforme projeto. Campo obrigatório.</small>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label offset-sm-3 col-sm-6" for="largrolo">Largura do rolo de tecido*</label>
                 <div class="offset-sm-3 col-sm-6">
                   <input required type="number" class="form-control" value="largrolo" id="largrolo" name="largrolo" placeholder="Insira a medida em mm">
-                  <small id="emailHelp" class="form-text">* Conforme padrão de mercado. Campo obrigatório.</small>
+                  <small id="" class="form-text">* Conforme padrão de mercado. Campo obrigatório.</small>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label offset-sm-3 col-sm-6" for="emenda">Largura da Emenda*</label>
                 <div class="offset-sm-3 col-sm-6">
                   <input required type="number" class="form-control" value="emenda" id="emenda" name="emenda" placeholder="Insira a medida em mm">
-                  <small id="emailHelp" class="form-text">* Emenda: junção entre os tecidos. Campo obrigatório.</small>
+                  <small id="" class="form-text">* Emenda: junção entre os tecidos. Campo obrigatório.</small>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label offset-sm-3 col-sm-6" for="fechamento">Largura do Acabamento Lateral*</label>
                 <div class="offset-sm-3 col-sm-6">
                   <input required type="number" class="form-control" value="fechamento" id="fechamento" name="fechamento" placeholder="Insira a medida em mm">
-                  <small id="emailHelp" class="form-text">* Se não tiver acabamento, insira 0. Campo obrigatório.</small>
+                  <small id="" class="form-text">* Se não tiver acabamento, insira 0. Campo obrigatório.</small>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label offset-sm-3 col-sm-6" for="rodateto">Altura da Cabeça da Cortina (barra superior)*</label>
                 <div class="offset-sm-3 col-sm-6">
                   <input required type="number" class="form-control" value="rodateto" id="rodateto" name="rodateto" placeholder="Insira a medida em mm">
-                  <small id="emailHelp" class="form-text">* Se não tiver acabamento, insira 0. Campo obrigatório.</small>
+                  <small id="" class="form-text">* Se não tiver acabamento, insira 0. Campo obrigatório.</small>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label offset-sm-3 col-sm-6" for="rodape">Altura da Barra da Cortina (rodapé)*</label>
                 <div class="offset-sm-3 col-sm-6">
                   <input required type="number" class="form-control" value="rodape" id="rodape" name="rodape" placeholder="Insira a medida em mm">
-                  <small id="emailHelp" class="form-text">* Se não tiver acabamento, insira 0. Campo obrigatório.</small>
+                  <small id="" class="form-text">* Se não tiver acabamento, insira 0. Campo obrigatório.</small>
                 </div>
               </div>
               <div class="form-group"> 
