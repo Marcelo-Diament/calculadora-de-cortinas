@@ -1,6 +1,12 @@
 RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule .* https://calculadora-de-cortina.com.br/$1 [L,R=301]
 RewriteCond %{HTTP_HOST} ^www\.calculadora-de-cortina\.com\.br [NC]
-RewriteRule ^(.*)$ https://calculadora-de-cortina.com.br/$1 [L,R=301]
+RewriteRule .* https://calculadora-de-cortina.com.br/$1 [L,R=301]
+
+RewriteBase /
+RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
 
 # BEGIN Compress text files
 <ifModule mod_deflate.c>
