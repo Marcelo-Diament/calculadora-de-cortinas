@@ -37,6 +37,10 @@ RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
 </ifModule>
 # END Expire headers
 
+<ifModule mod_headers.c>
+Header set Connection keep-alive
+</ifModule>
+
 # BEGIN Cache-Control Headers
 <ifModule mod_headers.c>
   <filesMatch "\.(ico|jpe?g|png|gif|swf)$">
@@ -145,6 +149,3 @@ ExpiresByType text/css "access plus 1 year"
 ExpiresByType application/javascript "access plus 1 year"
 </IfModule>
 
-<ifModule mod_headers.c>
-Header set Connection keep-alive
-</ifModule>
